@@ -304,7 +304,6 @@ async function send() {
   history.push({ role: 'user', content: text });
   ta.value = '';
   ta.style.height = 'auto';
-  ta.blur(); // hide keyboard on mobile after send
 
   busy = true;
   document.getElementById('sendBtn').disabled = true;
@@ -337,7 +336,7 @@ async function send() {
     }
   } catch (e) {
     removeTyping(typingId);
-    renderMessage('ai', "Something went wrong. Please try again.", null, false);
+    renderMessage('ai', "Error: " + e.message, null, false);
   }
 
   busy = false;
